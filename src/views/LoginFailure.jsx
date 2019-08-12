@@ -1,28 +1,19 @@
 import React, { Component } from "react";
-import List from "../views/List";
-import PageButton from "../views/PageButton";
-import { Grid, Row, Col, Table } from "react-bootstrap";
-import LoginFailureData from "../views/LoginFailureData";
+import List from "./LoginList";
+import PageButton from "./PageButton";
+import { Table } from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 
-const listData = [{
-    "id":"1",
-    "inserted_time":"2019-07-24 06:30:10.136",
-    "error_message":"User does not exist",
-    "errorCode":"403"
-}] 
 
-class listBox extends Component {
+class loginFailure extends Component {
    
     constructor(props) {
         super(props);
         this.pageNext=this.pageNext.bind(this);
         this.setPage=this.setPage.bind(this);
         this.state = {
-         // totalData:[],
+          totalData:[],
           indexList:[],
-          totalData:listData,
-         // totalData:LoginFailureData.state,
           current: 1, 
           pageSize:10, 
           goValue:0, 
@@ -33,17 +24,19 @@ class listBox extends Component {
         fetch('http://localhost:8080/loginFailure')
         .then(res => res.json())
         .then((data) => {
-          this.setState({ totalData: data })
+          this.setState({ 
+              totalData: data,
+         })
+         
         })
+        .then((data) => {
+            this.setState({ 
+                totalPage:Math.ceil( this.state.totalData.length/this.state.pageSize),
+           })
+           
+           this.pageNext(this.state.goValue)
+          })
         .catch(console.log)
-    }
-
-    componentWillMount(){
-        this.setState({
-            totalPage:Math.ceil( this.state.totalData.length/this.state.pageSize),
-        })
-        this.pageNext(this.state.goValue)
-
     }
 
     setPage(num){
@@ -89,4 +82,4 @@ class listBox extends Component {
         );
     }
 }
-export default listBox;
+export default loginFailure;

@@ -16,11 +16,14 @@
 
 */
 import Dashboard from "views/Dashboard.jsx";
-import UserProfile from "views/UserProfile.jsx";
-import TableList from "views/TableList.jsx";
+
 import Typography from "views/Typography.jsx";
-import Icons from "views/Icons.jsx";
-import ListBox from 'views/ListBox';
+//import Icons from "views/Icons.jsx";
+//import TableList from "views/TableListLogin";
+import loginFailure from 'views/LoginFailure';
+import apiTesting from "views/APITesing";
+import downsamplingError from "views/DownsamplingError";
+import backfillFailure from "views/BackfillFailure";
 
 const dashboardRoutes = [
   {
@@ -34,28 +37,28 @@ const dashboardRoutes = [
     path: "/loginFailure",
     name: "Login Failure",
     icon: "pe-7s-user",
-    component: ListBox,
+    component: loginFailure,
     layout: "/admin"
   },
   {
     path: "/downsamplingError",
     name: "Downsampling Error",
     icon: "pe-7s-note2",
-    component: TableList,
+    component: downsamplingError,
     layout: "/admin"
   },
   {
     path: "/backfillFailure",
     name: "Backfill Failure",
     icon: "pe-7s-news-paper",
-    component: Typography,
+    component: backfillFailure,
     layout: "/admin"
   },
   {
     path: "/APItesting",
     name: "API testing",
     icon: "pe-7s-science",
-    component: Icons,
+    component: apiTesting,
     layout: "/admin"
   }
 ];

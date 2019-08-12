@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class list extends Component {
+class listLogin extends Component {
     
 
     constructor(props) {
@@ -9,18 +9,20 @@ class list extends Component {
           downsamplingErrors:[]
         };
       }
+
       
     render() {
-        const { id,inserted_time,error_message,errorCode } = this.props
+        const { id,start_time,end_time,inserted_time,api_name } = this.props
         
         return (
                 <tr id={id}>
                     <td>{id}</td>
-                    <td>{inserted_time} </td>
-                    <td>{error_message}  </td>
-                    <td>{errorCode}</td>
+                    <td>{start_time} </td>
+                    <td>{end_time}  </td>
+                    <td>{inserted_time}</td>
+                    <td>{api_name}</td>
                 </tr>
         );
     }
 }
-export default list;
+export default listLogin;
