@@ -16,7 +16,8 @@
 
 */
 import React, { Component } from "react";
-import { NavItem, Nav } from "react-bootstrap";
+import Clock from 'react-live-clock';
+import { NavItem, Nav} from "react-bootstrap";
 
 class AdminNavbarLinks extends Component {
   render() {
@@ -26,6 +27,20 @@ class AdminNavbarLinks extends Component {
           <NavItem eventKey={1} href="#">
             <i className="fa fa-dashboard" />
             <p className="hidden-lg hidden-md">Dashboard</p>
+          </NavItem>
+          <NavItem eventKey={3} href="#">
+            <p className="hidden-lg hidden-md">Search</p>
+          </NavItem>
+        </Nav>
+        <Nav pullRight>
+          <NavItem>
+            <Clock format={'dddd, HH:mm:ss A'} ticking={true} timezone={'Japan'} />
+          </NavItem>
+          <NavItem eventKey={1} href="#">
+            Account
+          </NavItem>
+          <NavItem eventKey={3} href="/login">
+            Log out
           </NavItem>
         </Nav>
       </div>

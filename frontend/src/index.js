@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+/*import React from "react";
 import ReactDOM from "react-dom";
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -27,13 +27,43 @@ import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
 import AdminLayout from "layouts/Admin.jsx";
+import  LoginPage  from './LoginPage/LoginPage';
+import  RegisterPage  from './RegisterPage/RegisterPage';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/admin" render={props => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/register" component={RegisterPage} />
+      <Redirect from="/" to="/login" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
+);  */
+
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './views/App';
+import { BrowserRouter } from 'react-router-dom';
+import * as serviceWorker from './serviceWorker';
+
+import { Provider } from 'react-redux'
+import store from './store'
+
+ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter>
+        <App />
+        </BrowserRouter>
+    </Provider>
+, document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+

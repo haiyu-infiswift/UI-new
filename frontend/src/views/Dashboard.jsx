@@ -19,10 +19,16 @@ import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
 
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
+import openSocket from 'socket.io-client'
+import { startAction, formUpdate, initComposer } from '../actions/composer'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+    const socket = openSocket('https://vpp-demo.infiswift.tech');
+        this.socket = socket
     this.state = {
       loginStatus: [],
       fiveMinStatus:[],
@@ -108,6 +114,8 @@ class Dashboard extends Component {
 
 
   render() {
+    if (!localStorage.getItem('token'))
+    return <Redirect to="/Login" />;
     const loginstatus = this.state.loginStatus;
     var login_start_time = null;
     var login_end_time = null;
@@ -376,4 +384,12 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return {
+    dashboard: state.dashboard
+  }
+}
+
+export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(Dashboard)
+
+//export default Dashboard;

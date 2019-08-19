@@ -16,14 +16,13 @@
 
 */
 import Dashboard from "views/Dashboard.jsx";
-
-import Typography from "views/Typography.jsx";
-//import Icons from "views/Icons.jsx";
-//import TableList from "views/TableListLogin";
 import loginFailure from 'views/LoginFailure';
 import apiTesting from "views/APITesing";
 import downsamplingError from "views/DownsamplingError";
 import backfillFailure from "views/BackfillFailure";
+import Grafana from "views/Grafana";
+import LoginPage from "LoginPage/LoginPage";
+import RegisterPage from "RegisterPage/RegisterPage";
 
 const dashboardRoutes = [
   {
@@ -59,6 +58,13 @@ const dashboardRoutes = [
     name: "API testing",
     icon: "pe-7s-science",
     component: apiTesting,
+    layout: "/admin"
+  },
+  {
+    path: "/Grafana",
+    name: "Grafana graph",
+    icon: "pe-7s-leaf",
+    component: Grafana,
     layout: "/admin"
   }
 ];

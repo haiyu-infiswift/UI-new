@@ -1,0 +1,10 @@
+{
+  "mqtt": {
+    "BrokerUrl": "mqtts://mqtt-broker.infiswift.tech:8883",
+    "ClientID": "f8ee5c1b4e824afc96a6eb043fbfe5e1",
+    "Username": "DvXDX1O",
+    "Password": "dd5263fa-8ebe-4e42-bf88-c09558ac7ffb",
+    "SubscribeTopic": "/infiswift.tech/stream/version/1/id/f8ee5c1b4e824afc96a6eb043fbfe5e1/name/assetdata",
+    "PublishTopic": "/infiswift.tech/stream/version/1/id/f8ee5c1b4e824afc96a6eb043fbfe5e1/name/assetcontrol"
+  }
+}
