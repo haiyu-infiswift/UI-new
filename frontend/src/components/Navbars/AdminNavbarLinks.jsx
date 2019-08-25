@@ -36,9 +36,7 @@ class AdminNavbarLinks extends Component {
           <NavItem>
             <Clock format={'dddd, HH:mm:ss A'} ticking={true} timezone={'Japan'} />
           </NavItem>
-          <NavItem eventKey={1} href="#">
-            Account
-          </NavItem>
+         
           <NavItem eventKey={3} href="/login">
             Log out
           </NavItem>

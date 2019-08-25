@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import openSocket from 'socket.io-client'
 import { startAction, formUpdate, initComposer } from '../actions/composer'
-import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class Grafana extends Component {
@@ -32,4 +31,3 @@ const mapStateToProps = (state) => {
   }
   
   export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(Grafana)
-//export default Grafana;

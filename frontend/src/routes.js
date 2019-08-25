@@ -21,8 +21,9 @@ import apiTesting from "views/APITesing";
 import downsamplingError from "views/DownsamplingError";
 import backfillFailure from "views/BackfillFailure";
 import Grafana from "views/Grafana";
-import LoginPage from "LoginPage/LoginPage";
-import RegisterPage from "RegisterPage/RegisterPage";
+import onDemandBackfill from "views/OnDemandBackfill";
+import OnDemandAlarm from "views/OnDemandAlarm";
+
 
 const dashboardRoutes = [
   {
@@ -65,6 +66,18 @@ const dashboardRoutes = [
     name: "Grafana graph",
     icon: "pe-7s-leaf",
     component: Grafana,
+    layout: "/admin"
+  },{
+    path: "/OnDemandBackfill",
+    name: "On demand backfill",
+    icon: "pe-7s-hammer",
+    component: onDemandBackfill,
+    layout: "/admin"
+  },{
+    path: "/OnDemandAlarm",
+    name: "Alarm generator",
+    icon: "pe-7s-signal",
+    component: OnDemandAlarm,
     layout: "/admin"
   }
 ];

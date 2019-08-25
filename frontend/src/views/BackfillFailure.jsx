@@ -7,7 +7,6 @@ import { Grid, Row, Col } from "react-bootstrap";
 
 import openSocket from 'socket.io-client'
 import { startAction, formUpdate, initComposer } from '../actions/composer'
-import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 
@@ -106,5 +105,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(backfillFailure)
-
-//export default downsamplingError;

@@ -5,7 +5,6 @@ import IdleTimer from 'react-idle-timer'
 
 import AdminLayout from "layouts/Admin.jsx";
 import  LoginPage  from '../LoginPage/LoginPage';
-import  RegisterPage  from '../RegisterPage/RegisterPage';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/animate.min.css";
@@ -40,7 +39,6 @@ class App extends Component {
             <Switch>
                 <Route path="/admin" render={props => <AdminLayout {...props} />} />
                 <Route path="/login" component={LoginPage} />
-                <Route path="/register" component={RegisterPage} />
                 <Redirect from="/" to="/login" />
            </Switch>
             </div>
