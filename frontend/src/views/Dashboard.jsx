@@ -274,7 +274,7 @@ class Dashboard extends Component {
         <Grid fluid>
           <Row>
             <Col lg={6} sm={6}> 
-              <a href="/admin/loginFailure">   
+              <a href="/preview/loginFailure">   
               <StatsCard 
                 bigIcon={<i className="pe-7s-id text-success" />}
                 selectIcon={<i className={icon_selection_login} />}
@@ -286,7 +286,7 @@ class Dashboard extends Component {
               </a>
             </Col>
             <Col lg={6} sm={6}>
-             <a href="/admin/downsamplingError">   
+             <a href="/preview/downsamplingError">   
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-warning" />}
                 selectIcon={<i className={icon_selection_five} />}
@@ -300,7 +300,7 @@ class Dashboard extends Component {
             </Row>
             <Row>
             <Col lg={6} sm={6}>
-            <a href="/admin/downsamplingError">  
+            <a href="/preview/downsamplingError">  
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-warning" />}
                 selectIcon={<i className={icon_selection_fifteen} />}
@@ -312,7 +312,7 @@ class Dashboard extends Component {
               </a>
             </Col>
             <Col lg={6} sm={6}>
-              <a href="/admin/downsamplingError">  
+              <a href="/preview/downsamplingError">  
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-warning" />}
                 selectIcon={<i className={icon_selection_onehour} />}
@@ -326,7 +326,7 @@ class Dashboard extends Component {
           </Row>
           <Row>
             <Col lg={6} sm={6}>
-              <a href="/admin/downsamplingError">  
+              <a href="/preview/downsamplingError">  
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-warning" />}
                 selectIcon={<i className={icon_selection_fourhour} />}
@@ -338,7 +338,7 @@ class Dashboard extends Component {
               </a>
             </Col>
             <Col lg={6} sm={6}>
-            <a href="/admin/backfillFailure">  
+            <a href="/preview/backfillFailure">  
               <StatsCard
                 bigIcon={<i className="pe-7s-tools text-danger" />}
                 selectIcon={<i className={icon_selection_backfill} />}
@@ -352,7 +352,7 @@ class Dashboard extends Component {
           </Row>
           <Row>
             <Col lg={6} sm={6}>
-              <a href="/admin/APItesting">  
+              <a href="/preview/APItesting">  
               <StatsCard
                 bigIcon={<i className="pe-7s-share text-success" />}
                 selectIcon={<i className={icon_selection_APIInverterInsertStatus} />}
@@ -364,7 +364,7 @@ class Dashboard extends Component {
               </a>
             </Col>
             <Col lg={6} sm={6}>
-              <a href="/admin/APItesting">  
+              <a href="/preview/APItesting">  
               <StatsCard
                 bigIcon={<i className="pe-7s-share text-success" />}
                 selectIcon={<i className={icon_selection_APIGetGraphDataStatus} />}

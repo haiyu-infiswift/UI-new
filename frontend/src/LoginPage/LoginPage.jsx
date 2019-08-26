@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{ Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { callLogin, formUpdate } from '../actions/authAction'
@@ -8,16 +8,41 @@ import search_logo from "assets/img/SysMonitor.png";
 
 
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
+    constructor(props) {
+        super();
+        this.state = {
+          select_mode:''
+        };
+      
+      }
+
   
     loginSubmit() {
+    
         this.props.callLogin(this.props.auth.email, this.props.auth.password);
+        
     }
+
+    handleInputChange(property) {
+        return e => {
+          this.setState({
+            [property]: e.target.value
+          });
+        };
+      }
   
+    componentDidMount() {
+          this.setState({ 
+              select_mode: 'preview',
+         })
+     }
        
     render() {
-        if (localStorage.getItem('token'))
-        return <Redirect to="/admin/dashboard" />;
+        if (localStorage.getItem('token') && this.state.select_mode=="preview")
+        return <Redirect to="/preview/dashboard" />;
+        if (localStorage.getItem('token') && this.state.select_mode=="production")
+        return <Redirect to="/preview/loginFailure" />;
         return (
             <div>
                
@@ -30,6 +55,7 @@ class LoginPage extends React.Component {
                         event.preventDefault()
                         this.props.callLogin(this.props.auth.email, this.props.auth.password);
                         this.loginSubmit.bind(this)
+                        console.log("select mode: " + this.state.select_mode);
                     }}>
 
                       <div className="search"><img className="search-element" alt="search_image" src={search_logo}/></div>
@@ -45,9 +71,9 @@ class LoginPage extends React.Component {
                         <div class="form-group">
                             <div class = "selection">
                                 <label for="sel1">Select mode: </label>
-                                <select id="sel1">
-                                    <option>preview</option>
-                                    <option>production</option>
+                                <select id="sel1" value={this.state.select_mode} onChange={this.handleInputChange("select_mode")}>
+                                    <option value = "preview">preview</option>
+                                    <option value = "production">production</option>
                                 </select>
                             </div>
                             <div class = "signin"> 

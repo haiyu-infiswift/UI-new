@@ -27,20 +27,20 @@ class App extends Component {
         }
         return (
             <div>
-            <IdleTimer
-            ref={ref => { this.idleTimer = ref }}
-            element={document}
-            onActive={this.onActive}
-            onIdle={this.onIdle}
-            onAction={this.onAction}
-            debounce={250}
-            timeout={1000 * 60 * 15} />  
-            
-            <Switch>
-                <Route path="/admin" render={props => <AdminLayout {...props} />} />
-                <Route path="/login" component={LoginPage} />
-                <Redirect from="/" to="/login" />
-           </Switch>
+                <IdleTimer
+                ref={ref => { this.idleTimer = ref }}
+                element={document}
+                onActive={this.onActive}
+                onIdle={this.onIdle}
+                onAction={this.onAction}
+                debounce={250}
+                timeout={1000 * 60 * 15} />  
+                
+                <Switch>
+                    <Route path="/preview" render={props => <AdminLayout {...props} />} />
+                    <Route path="/login" component={LoginPage} />
+                    <Redirect from="/" to="/login" />
+            </Switch>
             </div>
             )
         }

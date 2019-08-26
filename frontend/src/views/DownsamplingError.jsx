@@ -108,5 +108,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(downsamplingError)
-
-//export default downsamplingError;

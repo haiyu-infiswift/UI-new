@@ -31,54 +31,54 @@ const dashboardRoutes = [
     name: "Hien Monitor",
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin"
+    layout: "/preview"
   },
   {
     path: "/loginFailure",
     name: "Login Failure",
     icon: "pe-7s-user",
     component: loginFailure,
-    layout: "/admin"
+    layout: "/preview"
   },
   {
     path: "/downsamplingError",
     name: "Downsampling Error",
     icon: "pe-7s-note2",
     component: downsamplingError,
-    layout: "/admin"
+    layout: "/preview"
   },
   {
     path: "/backfillFailure",
     name: "Backfill Failure",
     icon: "pe-7s-news-paper",
     component: backfillFailure,
-    layout: "/admin"
+    layout: "/preview"
   },
   {
     path: "/APItesting",
     name: "API testing",
     icon: "pe-7s-science",
     component: apiTesting,
-    layout: "/admin"
+    layout: "/preview"
   },
   {
     path: "/Grafana",
     name: "Grafana graph",
     icon: "pe-7s-leaf",
     component: Grafana,
-    layout: "/admin"
+    layout: "/preview"
   },{
     path: "/OnDemandBackfill",
     name: "On demand backfill",
     icon: "pe-7s-hammer",
     component: onDemandBackfill,
-    layout: "/admin"
+    layout: "/preview"
   },{
     path: "/OnDemandAlarm",
     name: "Alarm generator",
     icon: "pe-7s-signal",
     component: OnDemandAlarm,
-    layout: "/admin"
+    layout: "/preview"
   }
 ];
 
