@@ -12,9 +12,8 @@ class Grafana extends Component {
       }
     
     render() {
-
         return (
-           <iframe src="http://34.232.85.241:3000/d/000000010/preview-platform-cluster?orgId=1&panelId=12&fullscreen&from=1565738020590&to=1565824420590&theme=light" 
+           <iframe src="http://34.232.85.241:3000/d/000000011/hien-production-dashboard?orgId=1&panelId=12&fullscreen&from=1566889200000&to=1566975599999" 
            width="1150" height="1150" frameborder="0">
            </iframe>    
         );

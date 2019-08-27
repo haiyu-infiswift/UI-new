@@ -62,9 +62,6 @@ class onDemandBackfill extends Component {
           }); 
       }  
 
-     
-      
-
       handleInputChange(property) {
         return e => {
           this.setState({

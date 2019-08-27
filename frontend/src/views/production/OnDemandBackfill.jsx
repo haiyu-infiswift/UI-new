@@ -49,7 +49,7 @@ class onDemandBackfill extends Component {
 
           }); 
 
-          var trigger_data={"id":1,"status":"run"};
+         var trigger_data={"id":1,"status":"run"};
          fetch('http://localhost:8080/onDemandBackfillControl/1', {
             method: 'PUT',
             headers: {

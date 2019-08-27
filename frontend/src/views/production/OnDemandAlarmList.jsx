@@ -4,7 +4,6 @@ class listOnDemandBackfill extends Component {
     
     render() {
         const { id,setting,inserted_time,status} = this.props
-    
 
         return (
                 <tr id={id}>

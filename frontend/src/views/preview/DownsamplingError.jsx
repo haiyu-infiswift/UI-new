@@ -64,36 +64,35 @@ class downsamplingError extends Component {
         return (
                     <Grid>
                     <Row>
-                    <Col lg={12} sm={12}>
-                    <Card
-                        title="Downsampling error check"
-                        category="Record downsampling error of 5min, 15min, 1hr, 4hr"
-                        ctTableFullWidth
-                        ctTableResponsive
-                        content={
-                        <Table>
-                        <thead>
-                            <tr>
-                              <td>id</td>
-                              <td>project_id</td>
-                              <td>start_time</td>
-                              <td>end_time</td>
-                              <td>solved</td>
-                              <td>equipment</td>
-                              <td>interval_num</td>
-                            </tr>
-                          </thead>
-                            <tbody>
-                                {this.state.indexList.map(function (cont) {
-                                    return <List {...cont} />
-                                })}
-                            </tbody>
-                        <PageButton { ...this.state } pageNext={this.pageNext} />
-                         </Table> 
-                        }
-                    
-                     />
-                     </Col>
+                        <Col lg={12} sm={12}>
+                            <Card
+                                title="Downsampling error check"
+                                category="Record downsampling error of 5min, 15min, 1hr, 4hr"
+                                ctTableFullWidth
+                                ctTableResponsive
+                                content={
+                                <Table>
+                                <thead>
+                                    <tr>
+                                    <td>id</td>
+                                    <td>project_id</td>
+                                    <td>start_time</td>
+                                    <td>end_time</td>
+                                    <td>solved</td>
+                                    <td>equipment</td>
+                                    <td>interval_num</td>
+                                    </tr>
+                                </thead>
+                                    <tbody>
+                                        {this.state.indexList.map(function (cont) {
+                                            return <List {...cont} />
+                                        })}
+                                    </tbody>
+                                <PageButton { ...this.state } pageNext={this.pageNext} />
+                                </Table> 
+                                }
+                            />
+                        </Col>
                      </Row>
                      </Grid>
                

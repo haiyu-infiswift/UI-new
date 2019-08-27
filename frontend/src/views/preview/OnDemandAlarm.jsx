@@ -37,7 +37,7 @@ class onDemandBackfill extends Component {
 
       handleSubmit(event) {
         var date = new Date();
-        var d = new Date(date.getTime() + 1000*60*60*9);
+        var d = new Date(date.getTime() + 1000 * 60 * 60 * 9);
         this.state.inserted_time = d;
         var alarm_data={"setting":this.state.setting,"inserted_time":this.state.inserted_time,"status":"sent to broker"};
 
@@ -61,9 +61,6 @@ class onDemandBackfill extends Component {
             body: JSON.stringify(trigger_data)
           }); 
       }  
-
-     
-      
 
       handleInputChange(property) {
         return e => {
@@ -156,11 +153,11 @@ class onDemandBackfill extends Component {
         );
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        onDemandBackfill: state.onDemandBackfill
-    }
-}
+  const mapStateToProps = (state) => {
+      return {
+          onDemandBackfill: state.onDemandBackfill
+      }
+  }
 
 export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(onDemandBackfill)
 

@@ -13,7 +13,6 @@ class listLogin extends Component {
     render() {
         const { id,project_id,start_time,end_time,equipment,inserted_time,interval_num } = this.props
     
-
         return (
                 <tr id={id}>
                     <td>{id}</td>

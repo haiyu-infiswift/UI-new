@@ -6,7 +6,6 @@ class listOnDemandBackfill extends Component {
     render() {
         const { id,start_time,end_time,interval_num,status} = this.props
     
-
         return (
                 <tr id={id}>
                     <td>{id}</td>

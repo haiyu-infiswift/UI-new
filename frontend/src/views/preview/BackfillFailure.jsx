@@ -61,37 +61,36 @@ class backfillFailure extends Component {
         return (
                     <Grid>
                     <Row>
-                    <Col lg={12} sm={12}>
+                        <Col lg={12} sm={12}>
 
-                    <Card
-                        title="Real-time Backfill Failure"
-                        category="Record real-time backfill failures"
-                        ctTableFullWidth
-                        ctTableResponsive
-                        content={
-                        <Table>
-                        <thead>
-                            <tr>
-                              <td>id</td>
-                              <td>project_id</td>
-                              <td>start_time</td>
-                              <td>end_time</td>
-                              <td>equipment</td>
-                              <td>inserted_time</td>
-                              <td>interval_num</td>
-                            </tr>
-                          </thead>
-                            <tbody>
-                                {this.state.indexList.map(function (cont) {
-                                    return <List {...cont} />
-                                })}
-                            </tbody>
-                        <PageButton { ...this.state } pageNext={this.pageNext} />
-                         </Table> 
-                        }
-                    
-                     />
-                     </Col>
+                            <Card
+                                title="Real-time Backfill Failure"
+                                category="Record real-time backfill failures"
+                                ctTableFullWidth
+                                ctTableResponsive
+                                content={
+                                <Table>
+                                <thead>
+                                    <tr>
+                                    <td>id</td>
+                                    <td>project_id</td>
+                                    <td>start_time</td>
+                                    <td>end_time</td>
+                                    <td>equipment</td>
+                                    <td>inserted_time</td>
+                                    <td>interval_num</td>
+                                    </tr>
+                                </thead>
+                                    <tbody>
+                                        {this.state.indexList.map(function (cont) {
+                                            return <List {...cont} />
+                                        })}
+                                    </tbody>
+                                <PageButton { ...this.state } pageNext={this.pageNext} />
+                                </Table> 
+                                }
+                            />
+                        </Col>
                      </Row>
                      </Grid>
                

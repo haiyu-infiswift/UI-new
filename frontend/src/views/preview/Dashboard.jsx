@@ -392,4 +392,3 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(Dashboard)
 
-//export default Dashboard;

@@ -88,8 +88,8 @@ class loginFailure extends Component {
                      />
                     </Col>
                     
-                     </Row>
-                     </Grid>
+                    </Row>
+                    </Grid>
                
         );
     }
@@ -102,4 +102,3 @@ const mapStateToProps = (state) => {
   }
   
   export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(loginFailure)
-//export default loginFailure;

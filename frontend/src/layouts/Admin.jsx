@@ -28,18 +28,14 @@ import routesProd from "routesProd.js";
 
 import image from "assets/img/sidebar-3.jpg";
 
-//import login from "LoginPage/LoginPage";
 
 class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mode_status:'',
-      _notificationSystem: null,
-      image: image,
-      color: "black",
       hasImage: true,
-      fixedClasses: "dropdown show-dropdown open"
+   
     };
   }
 
@@ -78,7 +74,6 @@ class Admin extends Component {
                   return null;
                 }
               });
-        
           };
 
 
@@ -145,16 +140,7 @@ class Admin extends Component {
           return "Brand";
         }; 
 
-      handleImageClick = image => {
-        this.setState({ image: image });
-      };
-      handleColorClick = color => {
-        this.setState({ color: color });
-      };
-      handleHasImage = hasImage => {
-        this.setState({ hasImage: hasImage });
-      };
-      
+   
 
       componentWillMount() {
         this.renderMyData();

@@ -60,34 +60,32 @@ class loginFailure extends Component {
         return (
                     <Grid>
                     <Row>
-                    <Col lg={12} sm={12}>
-                    <Card
-                        title="Real-time Login Failures"
-                        category="Record real-time login failures"
-                        ctTableFullWidth
-                        ctTableResponsive
-                        content={
-                        <Table>
-                        <thead>
-                            <tr>
-                              <td>id</td>
-                              <td>inserted_time</td>
-                              <td>reason</td>
-                              <td>errror code</td>
-                            </tr>
-                          </thead>
-                            <tbody>
-                                {this.state.indexList.map(function (cont) {
-                                    return <List {...cont} />
-                                })}
-                            </tbody>
-                        <PageButton { ...this.state } pageNext={this.pageNext} />
-                         </Table> 
-                        }
-                    
-                     />
-                    </Col>
-                    
+                      <Col lg={12} sm={12}>
+                        <Card
+                            title="Real-time Login Failures"
+                            category="Record real-time login failures"
+                            ctTableFullWidth
+                            ctTableResponsive
+                            content={
+                            <Table>
+                            <thead>
+                                <tr>
+                                  <td>id</td>
+                                  <td>inserted_time</td>
+                                  <td>reason</td>
+                                  <td>errror code</td>
+                                </tr>
+                              </thead>
+                                <tbody>
+                                    {this.state.indexList.map(function (cont) {
+                                        return <List {...cont} />
+                                    })}
+                                </tbody>
+                            <PageButton { ...this.state } pageNext={this.pageNext} />
+                            </Table> 
+                            }
+                        />
+                      </Col>
                      </Row>
                      </Grid>
                

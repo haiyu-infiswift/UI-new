@@ -14,7 +14,6 @@ class LoginPage extends Component {
         this.state = {
           select_mode:''
         };
-      
       }
 
   
