@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import openSocket from 'socket.io-client'
-import { startAction, formUpdate, initComposer } from '../actions/composer'
+import { startAction, formUpdate, initComposer } from '../../actions/composer'
 import { connect } from 'react-redux'
 
 class Grafana extends Component {
@@ -9,9 +9,6 @@ class Grafana extends Component {
         super(props);
         const socket = openSocket('https://vpp-demo.infiswift.tech');
         this.socket = socket
-      }
-       componentDidMount() {
-       
       }
 
     render() {

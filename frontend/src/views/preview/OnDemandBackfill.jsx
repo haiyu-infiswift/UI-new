@@ -3,10 +3,10 @@ import PageButton from "./PageButton";
 import { Table } from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 import { Grid, Row, Col } from "react-bootstrap";
-import List from "./OnDemandAlarmList";
+import List from "./OnDemandBackfillList";
 
 import openSocket from 'socket.io-client'
-import { startAction, formUpdate, initComposer } from '../actions/composer'
+import { startAction, formUpdate, initComposer } from '../../actions/composer'
 import { connect } from 'react-redux'
 
 
@@ -25,46 +25,42 @@ class onDemandBackfill extends Component {
           pageSize:10, 
           goValue:0, 
           totalPage:0,
-          setting:'low pv Index',
-          inserted_time:''
+          start_time:'',
+          end_time:'',
+          status:'false',
+          interval_num:''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-
-        this.sendHttpPostRequest = this.sendHttpPostRequest.bind(this);
        
+        this.sendHttpPostRequest = this.sendHttpPostRequest.bind(this);
       }
 
-
       handleSubmit(event) {
-        var date = new Date();
-        var d = new Date(date.getTime() + 1000*60*60*9);
-        this.state.inserted_time = d;
-        var data={"setting":this.state.setting,"inserted_time":this.state.inserted_time,"status":"sent to broker"};
 
-        fetch('http://localhost:8080/onDemandAlarm', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(data)
-        });
-
-
-        var data1={"status":"run"};
-        fetch('http://localhost:8080/onDemandAlarmControl', {
+        var backfill_data={"start_time":this.state.start_time,"end_time":this.state.end_time,"interval_num":this.state.interval_num,"status":"in progress"};
+   
+        fetch('http://localhost:8080/onDemandBackfill', {
             method: 'POST',
             headers: {
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
-            body: JSON.stringify(data1)
+            body: JSON.stringify(backfill_data)
+
           }); 
-      }  
 
-     
+          var trigger_data={"id":1,"status":"run"};
+         fetch('http://localhost:8080/onDemandBackfillControl/1', {
+            method: 'PUT',
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(trigger_data)
+          }); 
       
-
+      }
+      
       handleInputChange(property) {
         return e => {
           this.setState({
@@ -74,7 +70,8 @@ class onDemandBackfill extends Component {
       }
 
       componentDidMount() {
-        fetch('http://localhost:8080/onDemandAlarm')
+        setInterval(() => {
+        fetch('http://localhost:8080/onDemandBackfill')
         .then(res => res.json())
         .then((data) => {
           this.setState({ 
@@ -90,11 +87,12 @@ class onDemandBackfill extends Component {
            this.pageNext(this.state.goValue)
           })
         .catch(console.log)
+      }, 1000);
     }
 
     setPage(num){
         this.setState({
-            indexList:this.state.totalData.slice(num,num+this.state.pageSize)
+            indexList:this.state.totalData.slice(num,num + this.state.pageSize)
         })
     }
 
@@ -106,26 +104,35 @@ class onDemandBackfill extends Component {
 
     }
 
-
     render() {
-
+ 
         return (
                     <Grid>
                     <Row>
                     <Col lg={12} sm={12}>
 
                     <Card
-                        title="On demand alarm"
-                        category="On demand alarm to trigger the email"
+                        title="On demand backfill for specific period"
+                        category="Backfill data in downsampling table for specific period of time"
                         ctTableFullWidth
                         ctTableResponsive
                         content={
                             <div>
                             <form onSubmit={this.handleSubmit}>
-                  
-                            <label>Alarm type:</label>
-                            <select value={this.state.setting} onChange={this.handleInputChange("setting")}>
-                            <option value="lowPVIndex">low PV index</option>
+                            <label htmlFor="start">Start time:</label>
+                            <input type="text" id="start" name="start_time" value = {this.state.start_time} onChange={this.handleInputChange("start_time")} placeholder="2019-01-01 06：00：00"></input>
+                        
+                            <label htmlFor="end">End time:</label>
+                            <input type="text" id="end" name="end_time" value = {this.state.end_time} onChange={this.handleInputChange("end_time")} placeholder="2019-01-02 08：00：00"></input>
+
+
+                            <label>Interval:</label>
+                            <select value={this.state.interval_num} onChange={this.handleInputChange("interval_num")}>
+                            <option value=""></option>
+                            <option value="5min">5min</option>
+                            <option value="15min">15min </option>
+                            <option value="1hr">1hr</option>
+                            <option value="4hr">4hr</option>
                             </select>
 
                             <input type="submit" value="Start!" />
@@ -134,8 +141,9 @@ class onDemandBackfill extends Component {
                              <thead>
                                  <tr>
                                    <td>id</td>
-                                   <td>setting</td>
-                                   <td>inserted_time</td>
+                                   <td>start_time</td>
+                                   <td>end_time</td>
+                                   <td>interval</td>
                                    <td>status</td>
                                  </tr>
                                </thead>

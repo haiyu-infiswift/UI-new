@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import List from "./APIList";
+import List from "./LoginList";
 import PageButton from "./PageButton";
 import { Table } from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 import { Grid, Row, Col } from "react-bootstrap";
 
 import openSocket from 'socket.io-client'
-import { startAction, formUpdate, initComposer } from '../actions/composer'
+import { startAction, formUpdate, initComposer } from '../../actions/composer'
 import { connect } from 'react-redux'
 
-
-class apiTesting extends Component {
+class loginFailure extends Component {
    
     constructor(props) {
         super(props);
@@ -28,7 +27,7 @@ class apiTesting extends Component {
         };
       }
       componentDidMount() {
-        fetch('http://localhost:8080/apiStatus')
+        fetch('http://localhost:8080/loginFailure')
         .then(res => res.json())
         .then((data) => {
           this.setState({ 
@@ -62,10 +61,9 @@ class apiTesting extends Component {
                     <Grid>
                     <Row>
                     <Col lg={12} sm={12}>
-
                     <Card
-                        title="Real-time API Testing Failure"
-                        category="Record real-time API testing failures"
+                        title="Real-time Login Failures"
+                        category="Record real-time login failures"
                         ctTableFullWidth
                         ctTableResponsive
                         content={
@@ -73,10 +71,9 @@ class apiTesting extends Component {
                         <thead>
                             <tr>
                               <td>id</td>
-                              <td>start_time</td>
-                              <td>end_time</td>
                               <td>inserted_time</td>
-                              <td>api_name</td>
+                              <td>reason</td>
+                              <td>errror code</td>
                             </tr>
                           </thead>
                             <tbody>
@@ -89,7 +86,8 @@ class apiTesting extends Component {
                         }
                     
                      />
-                     </Col>
+                    </Col>
+                    
                      </Row>
                      </Grid>
                
@@ -99,10 +97,9 @@ class apiTesting extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      apitesting: state.apitesting
+      loginFailure: state.loginFailure
     }
   }
   
-  export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(apiTesting)
-  
-//export default apiTesting;
+  export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(loginFailure)
+//export default loginFailure;

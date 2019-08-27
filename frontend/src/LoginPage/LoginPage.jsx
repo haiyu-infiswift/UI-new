@@ -19,9 +19,8 @@ class LoginPage extends Component {
 
   
     loginSubmit() {
-    
-        this.props.callLogin(this.props.auth.email, this.props.auth.password);
         
+        this.props.callLogin(this.props.auth.email, this.props.auth.password);
     }
 
     handleInputChange(property) {
@@ -39,10 +38,10 @@ class LoginPage extends Component {
      }
        
     render() {
-        if (localStorage.getItem('token') && this.state.select_mode=="preview")
+        if (localStorage.getItem('token') && this.state.select_mode==="preview")
         return <Redirect to="/preview/dashboard" />;
-        if (localStorage.getItem('token') && this.state.select_mode=="production")
-        return <Redirect to="/preview/loginFailure" />;
+        if (localStorage.getItem('token') && this.state.select_mode==="production")
+        return <Redirect to="/production/dashboard" />;
         return (
             <div>
                
@@ -55,7 +54,15 @@ class LoginPage extends Component {
                         event.preventDefault()
                         this.props.callLogin(this.props.auth.email, this.props.auth.password);
                         this.loginSubmit.bind(this)
-                        console.log("select mode: " + this.state.select_mode);
+                        var data={"id":1,"mode":this.state.select_mode};
+                        fetch('http://localhost:8080/loginMode/1', {
+                            method: 'PUT',
+                            headers: {
+                              "Content-Type": "application/json",
+                              "Accept": "application/json"
+                            },
+                            body: JSON.stringify(data)
+                          }); 
                     }}>
 
                       <div className="search"><img className="search-element" alt="search_image" src={search_logo}/></div>

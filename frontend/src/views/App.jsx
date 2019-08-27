@@ -38,6 +38,7 @@ class App extends Component {
                 
                 <Switch>
                     <Route path="/preview" render={props => <AdminLayout {...props} />} />
+                    <Route path="/production" render={props => <AdminLayout {...props} />} />
                     <Route path="/login" component={LoginPage} />
                     <Redirect from="/" to="/login" />
             </Switch>

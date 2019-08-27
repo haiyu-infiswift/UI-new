@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import List from "./LoginList";
+import List from "./BackfillList";
 import PageButton from "./PageButton";
 import { Table } from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
 import { Grid, Row, Col } from "react-bootstrap";
 
 import openSocket from 'socket.io-client'
-import { startAction, formUpdate, initComposer } from '../actions/composer'
+import { startAction, formUpdate, initComposer } from '../../actions/composer'
 import { connect } from 'react-redux'
 
-class loginFailure extends Component {
+
+class backfillFailure extends Component {
    
     constructor(props) {
         super(props);
@@ -27,7 +28,7 @@ class loginFailure extends Component {
         };
       }
       componentDidMount() {
-        fetch('http://localhost:8080/loginFailure')
+        fetch('http://localhost:8080/backfillFailureStatus')
         .then(res => res.json())
         .then((data) => {
           this.setState({ 
@@ -61,9 +62,10 @@ class loginFailure extends Component {
                     <Grid>
                     <Row>
                     <Col lg={12} sm={12}>
+
                     <Card
-                        title="Real-time Login Failures"
-                        category="Record real-time login failures"
+                        title="Real-time Backfill Failure"
+                        category="Record real-time backfill failures"
                         ctTableFullWidth
                         ctTableResponsive
                         content={
@@ -71,9 +73,12 @@ class loginFailure extends Component {
                         <thead>
                             <tr>
                               <td>id</td>
+                              <td>project_id</td>
+                              <td>start_time</td>
+                              <td>end_time</td>
+                              <td>equipment</td>
                               <td>inserted_time</td>
-                              <td>reason</td>
-                              <td>errror code</td>
+                              <td>interval_num</td>
                             </tr>
                           </thead>
                             <tbody>
@@ -86,20 +91,17 @@ class loginFailure extends Component {
                         }
                     
                      />
-                    </Col>
-                    
+                     </Col>
                      </Row>
                      </Grid>
                
         );
     }
 }
-
 const mapStateToProps = (state) => {
     return {
-      loginFailure: state.loginFailure
+        backfillFailure: state.backfillFailure
     }
-  }
-  
-  export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(loginFailure)
-//export default loginFailure;
+}
+
+export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(backfillFailure)

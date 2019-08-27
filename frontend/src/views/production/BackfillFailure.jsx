@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import List from "./DownsamplingList";
+import List from "./BackfillList";
 import PageButton from "./PageButton";
 import { Table } from "react-bootstrap";
-import { Grid, Row, Col } from "react-bootstrap";
 import Card from "components/Card/Card.jsx";
+import { Grid, Row, Col } from "react-bootstrap";
 
 import openSocket from 'socket.io-client'
-import { startAction, formUpdate, initComposer } from '../actions/composer'
-import { Redirect } from 'react-router-dom'
+import { startAction, formUpdate, initComposer } from '../../actions/composer'
 import { connect } from 'react-redux'
 
 
-class downsamplingError extends Component {
+class backfillFailure extends Component {
    
     constructor(props) {
         super(props);
@@ -29,7 +28,7 @@ class downsamplingError extends Component {
         };
       }
       componentDidMount() {
-        fetch('http://localhost:8080/downsamplingError')
+        fetch('http://localhost:8080/backfillFailureStatus')
         .then(res => res.json())
         .then((data) => {
           this.setState({ 
@@ -58,16 +57,15 @@ class downsamplingError extends Component {
     }
 
     render() {
-        if (!localStorage.getItem('token'))
-        return <Redirect to="/Login" />;
 
         return (
                     <Grid>
                     <Row>
                     <Col lg={12} sm={12}>
+
                     <Card
-                        title="Downsampling error check"
-                        category="Record downsampling error of 5min, 15min, 1hr, 4hr"
+                        title="Real-time Backfill Failure"
+                        category="Record real-time backfill failures"
                         ctTableFullWidth
                         ctTableResponsive
                         content={
@@ -78,8 +76,8 @@ class downsamplingError extends Component {
                               <td>project_id</td>
                               <td>start_time</td>
                               <td>end_time</td>
-                              <td>solved</td>
                               <td>equipment</td>
+                              <td>inserted_time</td>
                               <td>interval_num</td>
                             </tr>
                           </thead>
@@ -100,11 +98,10 @@ class downsamplingError extends Component {
         );
     }
 }
-
 const mapStateToProps = (state) => {
     return {
-        downsamplingError: state.downsamplingError
+        backfillFailure: state.backfillFailure
     }
 }
 
-export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(downsamplingError)
+export default connect(mapStateToProps, { startAction, formUpdate, initComposer })(backfillFailure)

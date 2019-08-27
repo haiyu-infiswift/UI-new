@@ -6,7 +6,7 @@ import { Grid, Row, Col } from "react-bootstrap";
 import List from "./OnDemandBackfillList";
 
 import openSocket from 'socket.io-client'
-import { startAction, formUpdate, initComposer } from '../actions/composer'
+import { startAction, formUpdate, initComposer } from '../../actions/composer'
 import { connect } from 'react-redux'
 
 
@@ -37,27 +37,26 @@ class onDemandBackfill extends Component {
 
       handleSubmit(event) {
 
-        var data={"start_time":this.state.start_time,"end_time":this.state.end_time,"interval_num":this.state.interval_num,"status":"in progress"};
-        console.log(data);
-
+        var backfill_data={"start_time":this.state.start_time,"end_time":this.state.end_time,"interval_num":this.state.interval_num,"status":"in progress"};
+   
         fetch('http://localhost:8080/onDemandBackfill', {
             method: 'POST',
             headers: {
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(backfill_data)
 
           }); 
 
-          var data1={"status":"run"};
-         fetch('http://localhost:8080/onDemandBackfillControl', {
-            method: 'POST',
+          var trigger_data={"id":1,"status":"run"};
+         fetch('http://localhost:8080/onDemandBackfillControl/1', {
+            method: 'PUT',
             headers: {
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
-            body: JSON.stringify(data1)
+            body: JSON.stringify(trigger_data)
           }); 
       
       }
